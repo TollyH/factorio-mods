@@ -1,0 +1,9 @@
+{
+    "name": "blinking-ghosts",
+    "version": "0.0.1",
+    "title": "Blinking Ghosts",
+    "author": "TollyH",
+    "homepage": "https://github.com/TollyH/factorio-mods",
+    "description": "Makes the colour of ghost tiles and entities customisable, as well as adding an optional blinking ghost icon on top of each ghost item.",
+    "factorio_version": "2.0"
+}
