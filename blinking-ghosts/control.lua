@@ -11,7 +11,8 @@ local function add_renderer(entity, sprite)
         players=storage.blinking_enabled_players,
         visible=storage.ghost_indicators_visible,
         x_scale = 0.5,
-        y_scale = 0.5
+        y_scale = 0.5,
+        render_layer="entity-info-icon"
     }
 end
 
