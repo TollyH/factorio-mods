@@ -100,7 +100,11 @@ local function blink_ghost_renderers()
     storage.ghost_indicators_visible = not storage.ghost_indicators_visible
     
     for id_number, renderer in pairs(storage.ghost_indicator_renderers) do
-        renderer.visible = storage.ghost_indicators_visible
+        renderer.visible = storage.ghost_indicators_visible and
+            -- If no players have the indicators visible, don't render them.
+            -- Fixes an issue where toggling indicators doesn't work if all
+            -- players have them disabled.
+            table_size(storage.blinking_enabled_players) > 0
     end
 end
 
