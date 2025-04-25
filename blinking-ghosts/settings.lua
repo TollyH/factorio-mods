@@ -36,5 +36,13 @@ data:extend({
         minimum_value = 0.0,
         maximum_value = 5.0,
         default_value = 0.5
+    },
+    {
+        type = "double-setting",
+        name = "blinking-ghosts-blink-scale",
+        setting_type = "runtime-global",
+        minimum_value = 0.01,
+        maximum_value = 5.0,
+        default_value = 0.5
     }
 })

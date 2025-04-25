@@ -12,14 +12,16 @@ local function add_renderer(entity, sprite)
     -- function is used as the identifier for the renderer.
     local id_number = script.register_on_object_destroyed(entity)
 
+    local scale = settings.global["blinking-ghosts-blink-scale"].value
+
     storage.ghost_indicator_renderers[id_number] = rendering.draw_sprite{
         sprite=sprite,
         target=entity,
         surface=entity.surface,
         players=storage.blinking_enabled_players,
         visible=is_renderers_visible(),
-        x_scale = 0.5,
-        y_scale = 0.5,
+        x_scale = scale,
+        y_scale = scale,
         render_layer="entity-info-icon"
     }
 end
@@ -154,6 +156,10 @@ script.on_event(defines.events.on_runtime_mod_setting_changed, function(event)
         -- The player has changed the rate that the ghosts blink,
         -- reset the blink timing.
         register_blink_event()
+    elseif event.setting == "blinking-ghosts-blink-scale" then
+        -- The player has changed the scale of the indicator,
+        -- recreate the renderers.
+        refresh_all_renderers()
     elseif event.setting == "blinking-ghosts-blink-enabled" then
         -- A player has changed whether the blinking icon is visible to them.
         local player = game.players[event.player_index]
