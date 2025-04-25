@@ -1,3 +1,11 @@
+local function is_renderers_visible()
+    return storage.ghost_indicators_visible and
+        -- If no players have the indicators visible, don't render them.
+        -- Fixes an issue where toggling indicators doesn't work if all
+        -- players have them disabled.
+        table_size(storage.blinking_enabled_players) > 0
+end
+
 local function add_renderer(entity, sprite)
     -- Make sure an event is fired when this entity stops existing so that the
     -- renderer can be removed. The registration number returned by this
@@ -9,7 +17,7 @@ local function add_renderer(entity, sprite)
         target=entity,
         surface=entity.surface,
         players=storage.blinking_enabled_players,
-        visible=storage.ghost_indicators_visible,
+        visible=is_renderers_visible(),
         x_scale = 0.5,
         y_scale = 0.5,
         render_layer="entity-info-icon"
@@ -44,8 +52,10 @@ local function refresh_all_renderers()
 end
 
 local function update_renderer_visible_to_players()
+    local visible = is_renderers_visible()
     for _, renderer in pairs(storage.ghost_indicator_renderers) do
         renderer.players = storage.blinking_enabled_players
+        renderer.visible = visible
     end
 end
 
@@ -98,13 +108,10 @@ end
 
 local function blink_ghost_renderers()
     storage.ghost_indicators_visible = not storage.ghost_indicators_visible
+    local visible = is_renderers_visible()
     
     for id_number, renderer in pairs(storage.ghost_indicator_renderers) do
-        renderer.visible = storage.ghost_indicators_visible and
-            -- If no players have the indicators visible, don't render them.
-            -- Fixes an issue where toggling indicators doesn't work if all
-            -- players have them disabled.
-            table_size(storage.blinking_enabled_players) > 0
+        renderer.visible = visible
     end
 end
 
