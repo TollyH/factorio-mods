@@ -56,8 +56,10 @@ end
 local function update_renderer_visible_to_players()
     local visible = is_renderers_visible()
     for _, renderer in pairs(storage.ghost_indicator_renderers) do
-        renderer.players = storage.blinking_enabled_players
-        renderer.visible = visible
+        if renderer.valid then
+            renderer.players = storage.blinking_enabled_players
+            renderer.visible = visible
+        end
     end
 end
 
@@ -113,7 +115,9 @@ local function blink_ghost_renderers()
     local visible = is_renderers_visible()
     
     for id_number, renderer in pairs(storage.ghost_indicator_renderers) do
-        renderer.visible = visible
+        if renderer.valid then
+            renderer.visible = visible
+        end
     end
 end
 
@@ -130,11 +134,6 @@ end
 
 script.on_init(function()
     storage.ghost_indicators_visible = true
-    register_blink_event()
-    refresh_player_list()
-end)
-
-script.on_load(function()
     register_blink_event()
     refresh_player_list()
 end)
@@ -188,3 +187,5 @@ script.on_event(
         refresh_player_list()
     end
 )
+
+register_blink_event()
