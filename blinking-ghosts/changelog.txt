@@ -1,0 +1,5 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 26. 04. 2025
+  Bugfixes:
+    - Fixed a crash when loading a world with pre-existing ghost tiles.

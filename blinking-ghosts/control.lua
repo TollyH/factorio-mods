@@ -48,7 +48,7 @@ local function refresh_all_renderers()
 
         local tiles = surface.find_entities_filtered{name="tile-ghost"}
         for _, tile in pairs(tiles) do
-            add_renderer(entity, "blinking-ghosts-tile-indicator")
+            add_renderer(tile, "blinking-ghosts-tile-indicator")
         end
     end
 end
