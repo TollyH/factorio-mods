@@ -44,5 +44,11 @@ data:extend({
         minimum_value = 0.01,
         maximum_value = 5.0,
         default_value = 0.5
+    },
+    {
+        type = "bool-setting",
+        name = "blinking-ghosts-blink-disable-flash",
+        setting_type = "runtime-global",
+        default_value = false
     }
 })

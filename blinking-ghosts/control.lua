@@ -111,7 +111,9 @@ local function refresh_player_list()
 end
 
 local function blink_ghost_renderers()
-    storage.ghost_indicators_visible = not storage.ghost_indicators_visible
+    storage.ghost_indicators_visible =
+        settings.global["blinking-ghosts-blink-disable-flash"].value or
+        not storage.ghost_indicators_visible
     local visible = is_renderers_visible()
     
     for id_number, renderer in pairs(storage.ghost_indicator_renderers) do
