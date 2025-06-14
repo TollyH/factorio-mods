@@ -33,7 +33,7 @@ data:extend({
         type = "double-setting",
         name = "blinking-ghosts-blink-rate",
         setting_type = "runtime-global",
-        minimum_value = 0.0,
+        minimum_value = 0.02,
         maximum_value = 5.0,
         default_value = 0.5
     },
