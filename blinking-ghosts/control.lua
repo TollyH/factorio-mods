@@ -158,7 +158,8 @@ local function update_player_blink_visibility(player, tile)
     end
 end
 
-local function refresh_player_list()
+-- Intentionally not local as is called from a migration.
+function refresh_player_list()
     -- Update the list of players that should be able to see the ghost icons.
     storage.entity_blinking_enabled_players = {}
     storage.tile_blinking_enabled_players = {}
