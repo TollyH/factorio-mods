@@ -37,12 +37,20 @@ data:extend({
         width = 64,
         height = 64
     },
-    -- Shortcut button
+    -- Shortcut buttons
     {
         type = "shortcut",
-        name = "blinking-ghosts-toggle-shortcut",
+        name = "blinking-ghosts-toggle-shortcut-entity",
         icon = data.raw["entity-ghost"]["entity-ghost"].icon,
         small_icon = data.raw["entity-ghost"]["entity-ghost"].icon,
+        toggleable = true,
+        action = "lua"
+    },
+    {
+        type = "shortcut",
+        name = "blinking-ghosts-toggle-shortcut-tile",
+        icon = data.raw["tile-ghost"]["tile-ghost"].icon,
+        small_icon = data.raw["tile-ghost"]["tile-ghost"].icon,
         toggleable = true,
         action = "lua"
     }

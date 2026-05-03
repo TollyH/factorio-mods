@@ -25,7 +25,13 @@ data:extend({
     },
     {
         type = "bool-setting",
-        name = "blinking-ghosts-blink-enabled",
+        name = "blinking-ghosts-blink-enabled-entity",
+        setting_type = "runtime-per-user",
+        default_value = true
+    },
+    {
+        type = "bool-setting",
+        name = "blinking-ghosts-blink-enabled-tile",
         setting_type = "runtime-per-user",
         default_value = true
     },
